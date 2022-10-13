@@ -1,0 +1,5 @@
+class Gameboard {
+  
+}
+
+export { Gameboard };
