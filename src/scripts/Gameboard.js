@@ -56,6 +56,13 @@ class Gameboard {
     }
     return true;
   }
+
+  isEmpty(column, row) {
+    if (this.board[column][row] === "") {
+      return true;
+    }
+    return false;
+  }
 }
 
 export { Gameboard };

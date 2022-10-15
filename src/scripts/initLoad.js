@@ -1,0 +1,5 @@
+function initLoad() {
+  
+}
+
+export { initLoad };
