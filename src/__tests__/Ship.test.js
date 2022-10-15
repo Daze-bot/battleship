@@ -1,4 +1,4 @@
-import { Ship } from "./Ship";
+import { Ship } from "../scripts/Ship";
 
 test('hit', () => {
   let smallShip = new Ship('submarine', 2);
