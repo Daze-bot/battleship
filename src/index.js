@@ -1,4 +1,4 @@
 import './css/style.css';
-import { initLoad } from './scripts/initLoad';
+import { gameLoad } from './scripts/DOMgameLoad';
 
-initLoad();
+gameLoad();

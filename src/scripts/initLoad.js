@@ -1,5 +1,0 @@
-function initLoad() {
-  
-}
-
-export { initLoad };
