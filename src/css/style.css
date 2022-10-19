@@ -32,6 +32,14 @@ body {
   grid-template: 10% 1fr / 10% 1fr;
 }
 
+.opponentBoard {
+  grid-area: 1/2/2/3;
+  height: calc(var(--playerBoardSize) * .8);
+  width: calc(var(--playerBoardSize) * .8);
+  display: grid;
+  grid-template: 10% 1fr / 10% 1fr;
+}
+
 .rowMarkers {
   grid-area: 2/1/3/2;
   display: flex;
@@ -53,11 +61,20 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+}
+
+.rowLabel {
   height: 10%;
+  width: 100%;
+}
+
+.columnLabel {
+  height: 100%;
   width: 10%;
 }
 
-.playerGameSquares {
+.playerGameSquares,
+.opponentGameSquares {
   grid-area: 2/2/3/3;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -67,6 +84,10 @@ body {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.playerSquare {
+.playerSquare,
+.opponentSquare {
   border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

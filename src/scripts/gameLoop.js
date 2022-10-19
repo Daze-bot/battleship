@@ -1,4 +1,17 @@
 import { Player } from "./Player";
+import {
+  playerShipPlacement,
+  computerShipPlacement
+} from "./shipPlacement";
 
-const player1 = new Player('player1');
-const player2 = new Player('player2');
+function gameLoop() {
+  const userPlayer = new Player('player');
+  playerShipPlacement(userPlayer);
+  userPlayer.renderPlayerBoard();
+
+  const computerPlayer = new Player('computer');
+  computerShipPlacement(computerPlayer);
+  computerPlayer.renderOpponentBoard();
+}
+
+export { gameLoop };

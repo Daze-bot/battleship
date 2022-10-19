@@ -18,6 +18,32 @@ class Player {
     }
     return;
   }
+
+  renderPlayerBoard() {
+    for (let i = 0; i < this.gameboard.board.length; i++) {
+      for (let j = 0; j < this.gameboard.board[i].length; j++) {
+        if (this.gameboard.board[i][j] !== 'hit' &&
+            this.gameboard.board[i][j] !=='miss' &&
+            this.gameboard.board[i][j] !== "") {
+          let square = document.getElementById(`p${j}${i}`);
+          square.textContent = 'S';
+        }
+      }
+    }
+  }
+
+  renderOpponentBoard() {
+    for (let i = 0; i < this.gameboard.board.length; i++) {
+      for (let j = 0; j < this.gameboard.board[i].length; j++) {
+        if (this.gameboard.board[i][j] !== 'hit' &&
+            this.gameboard.board[i][j] !=='miss' &&
+            this.gameboard.board[i][j] !== "") {
+          let square = document.getElementById(`o${j}${i}`);
+          square.textContent = 'S';
+        }
+      }
+    }
+  }
 }
 
 export { Player };
