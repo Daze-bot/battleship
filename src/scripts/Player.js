@@ -13,7 +13,7 @@ class Player {
   }
 
   makeAttack(column, row, opponentBoard) {
-    if (opponentBoard.board.isEmpty(column, row)) {
+    if (opponentBoard.notYetGuessed(column, row)) {
       opponentBoard.receiveAttack(column, row);
     }
     return;
@@ -27,6 +27,12 @@ class Player {
             this.gameboard.board[i][j] !== "") {
           let square = document.getElementById(`p${j}${i}`);
           square.textContent = 'S';
+        } else if (this.gameboard.board[i][j] === 'miss') {
+          let square = document.getElementById(`p${j}${i}`);
+          square.textContent = 'O';
+        } else if (this.gameboard.board[i][j] === 'hit') {
+          let square = document.getElementById(`p${j}${i}`);
+          square.textContent = 'X';
         }
       }
     }
@@ -35,11 +41,12 @@ class Player {
   renderOpponentBoard() {
     for (let i = 0; i < this.gameboard.board.length; i++) {
       for (let j = 0; j < this.gameboard.board[i].length; j++) {
-        if (this.gameboard.board[i][j] !== 'hit' &&
-            this.gameboard.board[i][j] !=='miss' &&
-            this.gameboard.board[i][j] !== "") {
+        if (this.gameboard.board[i][j] === 'miss') {
           let square = document.getElementById(`o${j}${i}`);
-          square.textContent = 'S';
+          square.textContent = 'O';
+        } else if (this.gameboard.board[i][j] === 'hit') {
+          let square = document.getElementById(`o${j}${i}`);
+          square.textContent = 'X';
         }
       }
     }

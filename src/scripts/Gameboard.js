@@ -57,8 +57,9 @@ class Gameboard {
     return true;
   }
 
-  isEmpty(column, row) {
-    if (this.board[column][row] === "") {
+  notYetGuessed(column, row) {
+    if (this.board[column][row] !== 'hit' &&
+        this.board[column][row] !== 'miss') {
       return true;
     }
     return false;
