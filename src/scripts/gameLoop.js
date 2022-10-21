@@ -20,6 +20,10 @@ function gameLoop() {
       let squareRow = square.id.slice(1, 2);
       userPlayer.makeAttack(squareColumn, squareRow, computerPlayer.gameboard)
       computerPlayer.renderOpponentBoard();
+      let randomColumn = Math.floor(Math.random() * 10);
+      let randomRow = Math.floor(Math.random() * 10);
+      computerPlayer.makeAttack(randomColumn, randomRow, userPlayer.gameboard);
+      userPlayer.renderPlayerBoard();
     });
   })
 }
