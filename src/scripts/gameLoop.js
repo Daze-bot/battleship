@@ -13,6 +13,10 @@ function gameLoop() {
   computerShipPlacement(computerPlayer);
   computerPlayer.renderOpponentBoard();
 
+  playTurn(userPlayer, computerPlayer);
+}
+
+function playTurn(userPlayer, computerPlayer) {
   let opponentSquares = document.querySelectorAll('.opponentSquare');
   opponentSquares.forEach(square => {
     square.addEventListener('click', () => {

@@ -47,6 +47,11 @@ function createPlayerBoard() {
   }
   playerBoard.appendChild(gameSquares);
 
+  let playerName = document.createElement('p');
+  playerName.classList.add('playerName');
+  playerName.textContent = 'Player';
+  playerBoard.appendChild(playerName);
+
   return playerBoard;
 }
 
@@ -84,6 +89,11 @@ function createOpponentBoard() {
     gameSquares.appendChild(playerSquare);
   }
   playerBoard.appendChild(gameSquares);
+
+  let opponentName = document.createElement('p');
+  opponentName.classList.add('opponentName');
+  opponentName.textContent = 'Opponent';
+  playerBoard.appendChild(opponentName);
 
   return playerBoard;
 }

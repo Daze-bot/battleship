@@ -42,6 +42,7 @@ body {
   width: var(--playerBoardSize);
   display: grid;
   grid-template: 10% 1fr / 10% 1fr;
+  position: relative;
 }
 
 .opponentBoard {
@@ -50,6 +51,16 @@ body {
   width: calc(var(--playerBoardSize) * .8);
   display: grid;
   grid-template: 10% 1fr / 10% 1fr;
+  position: relative;
+}
+
+.playerName,
+.opponentName {
+  position: absolute;
+  justify-self: center;
+  top: -40px;
+  font-size: 2rem;
+  font-family: 'black-ops';
 }
 
 .rowMarkers {
@@ -102,4 +113,31 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.playerSquare {
+  background-position: center;
+  background-size: cover;
+}
+
+.opponentGameSquares:hover {
+  cursor: url(../imgs/gun-pointer.png) 16 16, auto;
+}
+
+.opponentSquare:hover {
+  box-shadow: 0 0 2px 2px red;
+  border-radius: 8px;
+}
+
+.targetHit {
+  position: absolute;
+  height: 130%;
+  width: 130%;
+}
+
+.targetMiss {
+  height: 80%;
+  width: 80%;
+  opacity: .8;
 }

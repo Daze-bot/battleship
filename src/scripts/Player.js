@@ -1,5 +1,8 @@
 import { Ship } from "./Ship";
 import { Gameboard } from "./Gameboard";
+import { bgImages } from "./backGroundImgLoader";
+import Hit from '../imgs/explosion.svg';
+import Circle from '../imgs/circle.svg';
 
 class Player {
   constructor(name) {
@@ -47,13 +50,28 @@ class Player {
             this.gameboard.board[i][j] !=='miss' &&
             this.gameboard.board[i][j] !== "") {
           let square = document.getElementById(`p${j}${i}`);
-          square.textContent = 'S';
+          let shipName = this.gameboard.board[i][j].name.toLowerCase().replace(/\s/g, '-');
+          square.style.backgroundImage = `url(${bgImages[`${shipName}.svg`]})`;
         } else if (this.gameboard.board[i][j] === 'miss') {
           let square = document.getElementById(`p${j}${i}`);
-          square.textContent = 'O';
+          let missIMG = document.createElement('img');
+          missIMG.classList.add('targetMiss');
+          missIMG.src = Circle;
+          while (square.hasChildNodes()) {
+            square.removeChild(square.lastChild);
+          }
+          square.appendChild(missIMG);
+          square.style.background = 'none';
         } else if (this.gameboard.board[i][j] === 'hit') {
           let square = document.getElementById(`p${j}${i}`);
-          square.textContent = 'X';
+          let hitIMG = document.createElement('img');
+          hitIMG.classList.add('targetHit');
+          hitIMG.src = Hit;
+          while (square.hasChildNodes()) {
+            square.removeChild(square.lastChild);
+          }
+          square.appendChild(hitIMG);
+          square.style.background = 'none';
         }
       }
     }
@@ -64,10 +82,23 @@ class Player {
       for (let j = 0; j < this.gameboard.board[i].length; j++) {
         if (this.gameboard.board[i][j] === 'miss') {
           let square = document.getElementById(`o${j}${i}`);
-          square.textContent = 'O';
+          let missIMG = document.createElement('img');
+          missIMG.classList.add('targetMiss');
+          missIMG.src = Circle;
+          while (square.hasChildNodes()) {
+            square.removeChild(square.lastChild);
+          }
+          square.appendChild(missIMG);
+          square.style.background = 'none';
         } else if (this.gameboard.board[i][j] === 'hit') {
           let square = document.getElementById(`o${j}${i}`);
-          square.textContent = 'X';
+          let hitIMG = document.createElement('img');
+          hitIMG.classList.add('targetHit');
+          hitIMG.src = Hit;
+          while (square.hasChildNodes()) {
+            square.removeChild(square.lastChild);
+          }
+          square.appendChild(hitIMG);
         }
       }
     }
