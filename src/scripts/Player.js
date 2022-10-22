@@ -13,10 +13,31 @@ class Player {
   }
 
   makeAttack(column, row, opponentBoard) {
+    if (opponentBoard.checkAllShipsSunk() === true) {
+      return;
+    }
     if (opponentBoard.notYetGuessed(column, row)) {
       opponentBoard.receiveAttack(column, row);
     }
     return;
+  }
+
+  AIMove(userPlayer) {
+    let notGuessed = []
+    for (let i = 0; i < userPlayer.gameboard.board.length; i++) {
+      for (let j = 0; j < userPlayer.gameboard.board[i].length; j++) {
+        if (userPlayer.gameboard.notYetGuessed(i, j) === true) {
+          notGuessed.push(`${j}${i}`);
+        }
+      }
+    }
+    if (notGuessed.length > 0 && this.gameboard.checkAllShipsSunk() === false) {
+      let randomGuess = notGuessed[Math.floor(Math.random()*notGuessed.length)];
+      let randomColumn = randomGuess.slice(1, 2);
+      let randomRow = randomGuess.slice(0, 1);
+      this.makeAttack(randomColumn, randomRow, userPlayer.gameboard);
+      userPlayer.renderPlayerBoard();
+    }
   }
 
   renderPlayerBoard() {

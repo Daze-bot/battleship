@@ -1,6 +1,15 @@
 function gameLoad() {
+  document.body.appendChild(createHeader());
   document.body.appendChild(createPlayerBoard());
   document.body.appendChild(createOpponentBoard());
+}
+
+function createHeader() {
+  let gameName = document.createElement('header');
+  gameName.classList.add('gameName');
+  gameName.textContent = 'BATTLESHIP';
+
+  return gameName;
 }
 
 function createPlayerBoard() {
