@@ -1,18 +1,9 @@
-function gameLoad() {
-  document.body.appendChild(createHeader());
-  document.body.appendChild(createPlayerBoard());
+function gameLoad(userName) {
+  document.body.appendChild(createPlayerBoard(userName));
   document.body.appendChild(createOpponentBoard());
 }
 
-function createHeader() {
-  let gameName = document.createElement('header');
-  gameName.classList.add('gameName');
-  gameName.textContent = 'BATTLESHIP';
-
-  return gameName;
-}
-
-function createPlayerBoard() {
+function createPlayerBoard(userName) {
   let playerBoard = document.createElement('div');
   playerBoard.classList.add('playerBoard');
 
@@ -49,7 +40,7 @@ function createPlayerBoard() {
 
   let playerName = document.createElement('p');
   playerName.classList.add('playerName');
-  playerName.textContent = 'Player';
+  playerName.textContent = userName;
   playerBoard.appendChild(playerName);
 
   return playerBoard;
@@ -92,7 +83,7 @@ function createOpponentBoard() {
 
   let opponentName = document.createElement('p');
   opponentName.classList.add('opponentName');
-  opponentName.textContent = 'Opponent';
+  opponentName.textContent = 'Computer';
   playerBoard.appendChild(opponentName);
 
   return playerBoard;

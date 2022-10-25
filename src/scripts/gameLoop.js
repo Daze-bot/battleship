@@ -4,12 +4,12 @@ import {
   computerShipPlacement
 } from "./shipPlacement";
 
-function gameLoop() {
-  const userPlayer = new Player('player');
+function gameLoop(userName) {
+  const userPlayer = new Player(userName);
   playerShipPlacement(userPlayer);
   userPlayer.renderPlayerBoard();
 
-  const computerPlayer = new Player('computer');
+  const computerPlayer = new Player('Computer');
   computerShipPlacement(computerPlayer);
   computerPlayer.renderOpponentBoard();
 
@@ -30,15 +30,15 @@ function playTurn(userPlayer, computerPlayer) {
       if (computerPlayer.gameboard.notYetGuessed(squareColumn, squareRow) === false) {
         return;
       }
-      userPlayer.makeAttack(squareColumn, squareRow, computerPlayer.gameboard)
+      userPlayer.makeAttack(squareColumn, squareRow, computerPlayer.gameboard);
       computerPlayer.renderOpponentBoard();
       if (computerPlayer.gameboard.checkAllShipsSunk() === true) {
-        alert('User Player Wins!');
+        alert(`${userPlayer.name} Wins!`);
       }
 
       computerPlayer.AIMove(userPlayer);
       if (userPlayer.gameboard.checkAllShipsSunk() === true) {
-        alert('Computer Wins!');
+        alert(`${computerPlayer.name} Wins!`);
       }
     });
   })

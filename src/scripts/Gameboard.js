@@ -14,6 +14,9 @@ class Gameboard {
   receiveAttack(column, row) {
     if (this.board[column][row] !== "") {
       this.board[column][row].hit();
+      if (this.board[column][row].isSunk === true) {
+        alert(`${this.player}'s ${this.board[column][row].name} has been sunk!`);
+      }
       this.board[column][row] = 'hit';
     } else {
       this.board[column][row] = 'miss';

@@ -1,5 +1,6 @@
 :root {
   --playerBoardSize: min(70vh, 70vw);
+  --waterColor: #2a4043;
 }
 
 @font-face {
@@ -140,4 +141,69 @@ body {
   height: 80%;
   width: 80%;
   opacity: .8;
+}
+
+.newGameOptions {
+  grid-area: 2/1/3/3;
+}
+
+.playerNameSelection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10vh;
+  margin-bottom: 50vh;
+}
+
+.nameInput label,
+.nameInput input {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: 'black-ops';
+}
+
+.nameInput label {
+  margin-bottom: 8px;
+  font-size: 2rem;
+}
+
+.nameInput input {
+  appearance: none;
+  outline: none;
+  border: 1px solid var(--waterColor);
+  border-radius: 10px;
+  font-size: 3rem;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: none;
+}
+
+.nameInput input:hover {
+  box-shadow: inset 0 0 8px var(--waterColor);
+}
+
+.nameInput input:focus {
+  box-shadow: inset 0 0 0 4px var(--waterColor);
+}
+
+.startGame {
+  padding: 20px 40px;
+  font-size: 2rem;
+  font-family: 'black-ops';
+  border: none;
+  background-color: black;
+  box-shadow: 0 0 4px red;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.startGame:hover {
+  background-color: white;
+  color: black;
+}
+
+.hidden {
+  display: none;
 }
