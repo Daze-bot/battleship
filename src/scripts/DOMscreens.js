@@ -23,6 +23,8 @@ function newGame() {
   input.id = 'userPlayerName';
   input.maxLength = '12';
   nameInput.appendChild(input);
+  let playerName = localStorage.getItem('battleshipPlayerName') || "";
+  input.value = playerName;
 
   let playBtn = document.createElement('button');
   playBtn.classList.add('startGame');
@@ -33,4 +35,58 @@ function newGame() {
   return newGame;
 }
 
-export { newGame };
+function customAlertScreen() {
+  let alertBox = document.createElement('div');
+  alertBox.classList.add('alertBox', 'hidden');
+
+  let textBox = document.createElement('div');
+  textBox.classList.add('alertTextBox');
+  alertBox.appendChild(textBox);
+
+  return alertBox;
+}
+
+function alertSunkShip(player, shipName) {
+  let alertBox = document.querySelector('.alertBox');
+  alertBox.classList.remove('hidden');
+
+  let textBox = document.querySelector('.alertTextBox');
+  textBox.textContent = `${player}'s ${shipName} has been sunk!`;
+
+  setTimeout(hideAlert, 1500);
+}
+
+function alertGameOver(playerName) {
+  let alertBox = document.querySelector('.alertBox');
+  alertBox.classList.remove('hidden');
+  alertBox.classList.add('winnerScreen');
+
+  let textBox = document.querySelector('.alertTextBox');
+  textBox.textContent = `${playerName} Wins!`;
+
+  let resetBtn = document.createElement('button');
+  resetBtn.classList.add('resetGame');
+  resetBtn.textContent = 'New Game';
+
+  resetBtn.addEventListener('click', () => {
+    window.location.reload();
+  })
+
+  alertBox.appendChild(resetBtn);
+}
+
+function hideAlert() {
+  let alertBox = document.querySelector('.alertBox');
+  if (alertBox.classList.contains('winnerScreen')) {
+    return;
+  }
+  alertBox.classList.add('hidden');
+}
+
+export {
+  newGame,
+  customAlertScreen,
+  alertSunkShip,
+  alertGameOver,
+  hideAlert,
+ };

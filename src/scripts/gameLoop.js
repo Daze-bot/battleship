@@ -8,6 +8,7 @@ function gameLoop(userName) {
   const userPlayer = new Player(userName);
   playerShipPlacement(userPlayer);
   userPlayer.renderPlayerBoard();
+  userPlayer.turn = true;
 
   const computerPlayer = new Player('Computer');
   computerShipPlacement(computerPlayer);
@@ -20,26 +21,45 @@ function playTurn(userPlayer, computerPlayer) {
   let opponentSquares = document.querySelectorAll('.opponentSquare');
   opponentSquares.forEach(square => {
     square.addEventListener('click', () => {
-      if (computerPlayer.gameboard.checkAllShipsSunk() === true ||
-          userPlayer.gameboard.checkAllShipsSunk() === true) {
-        return;
-      }
-
       let squareColumn = square.id.slice(2, 3);
       let squareRow = square.id.slice(1, 2);
-      if (computerPlayer.gameboard.notYetGuessed(squareColumn, squareRow) === false) {
+      if (computerPlayer.gameboard.notYetGuessed(squareColumn, squareRow) === false ||
+          computerPlayer.gameboard.checkAllShipsSunk() === true ||
+          userPlayer.gameboard.checkAllShipsSunk() === true ||
+          userPlayer.turn === false) {
         return;
       }
       userPlayer.makeAttack(squareColumn, squareRow, computerPlayer.gameboard);
+      userPlayer.turn = false;
+      computerPlayer.turn = true;
       computerPlayer.renderOpponentBoard();
       if (computerPlayer.gameboard.checkAllShipsSunk() === true) {
-        alert(`${userPlayer.name} Wins!`);
+        userPlayer.winGame();
       }
 
-      computerPlayer.AIMove(userPlayer);
-      if (userPlayer.gameboard.checkAllShipsSunk() === true) {
-        alert(`${computerPlayer.name} Wins!`);
-      }
+      // .5s delay before each CPU move
+      setTimeout(function() {
+        // No additional delay if no ships sunk on player move
+        if (document.querySelector('.alertBox').classList.contains('hidden')) {
+          setTimeout(function() {
+            computerPlayer.AIMove(userPlayer);
+            userPlayer.turn = true;
+            computerPlayer.turn = false;
+            if (userPlayer.gameboard.checkAllShipsSunk() === true) {
+              computerPlayer.winGame();
+            }
+          }, 0) 
+        // Additional delay if player sunk a CPU ship to allow popup alert       
+        } else {
+          setTimeout(function() {
+            computerPlayer.AIMove(userPlayer);
+            userPlayer.turn = true;
+            computerPlayer.turn = false;
+            if (userPlayer.gameboard.checkAllShipsSunk() === true) {
+              computerPlayer.winGame();
+            }
+          }, 1250)
+        }}, 500);   
     });
   })
 }

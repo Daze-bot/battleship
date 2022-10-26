@@ -187,7 +187,8 @@ body {
   box-shadow: inset 0 0 0 4px var(--waterColor);
 }
 
-.startGame {
+.startGame,
+.resetGame {
   padding: 20px 40px;
   font-size: 2rem;
   font-family: 'black-ops';
@@ -199,9 +200,30 @@ body {
   cursor: pointer;
 }
 
-.startGame:hover {
+.startGame:hover,
+.resetGame:hover {
   background-color: white;
   color: black;
+}
+
+.alertBox {
+  position: fixed;
+  z-index: 500;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.20);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15vh;
+}
+
+.alertTextBox {
+  font-size: 4rem;
+  text-shadow: 0 0 6px white;
+  color: rgb(167, 0, 0);
+  font-weight: 700;
 }
 
 .hidden {

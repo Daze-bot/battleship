@@ -1,10 +1,11 @@
 import { gameLoad } from './DOMgameLoad';
 import { gameLoop } from './gameLoop';
-import { newGame } from './DOMscreens';
+import { newGame, customAlertScreen } from './DOMscreens';
 
 function initLoad() {
   document.body.appendChild(createHeader());
   document.body.appendChild(newGame());
+  document.body.appendChild(customAlertScreen());
 
   let startGame = document.querySelector('.startGame');
   startGame.addEventListener('click', () => {
@@ -13,7 +14,7 @@ function initLoad() {
       playerName = 'User Player';
     }
 
-    console.log(playerName);
+    window.localStorage.setItem('battleshipPlayerName', `${playerName}`);
 
     let newGameOptions = document.querySelector('.newGameOptions');
     document.body.removeChild(newGameOptions);

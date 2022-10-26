@@ -3,10 +3,12 @@ import { Gameboard } from "./Gameboard";
 import { bgImages } from "./backGroundImgLoader";
 import Hit from '../imgs/explosion.svg';
 import Circle from '../imgs/circle.svg';
+import { alertGameOver } from "./DOMscreens";
 
 class Player {
   constructor(name) {
     this.name = name;
+    this.turn = false;
     this.gameboard = new Gameboard(this.name);
     this.carrier = new Ship('Carrier', 5);
     this.battleship = new Ship('Battleship', 4);
@@ -16,7 +18,7 @@ class Player {
   }
 
   makeAttack(column, row, opponentBoard) {
-    if (opponentBoard.checkAllShipsSunk() === true) {
+    if (opponentBoard.checkAllShipsSunk() === true || this.turn === false) {
       return;
     }
     if (opponentBoard.notYetGuessed(column, row)) {
@@ -102,6 +104,10 @@ class Player {
         }
       }
     }
+  }
+
+  winGame() {
+    alertGameOver(this.name);
   }
 }
 

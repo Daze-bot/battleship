@@ -1,3 +1,5 @@
+import { alertSunkShip } from "./DOMscreens";
+
 class Gameboard {
   constructor(player) {
     this.player = player;
@@ -15,7 +17,7 @@ class Gameboard {
     if (this.board[column][row] !== "") {
       this.board[column][row].hit();
       if (this.board[column][row].isSunk === true) {
-        alert(`${this.player}'s ${this.board[column][row].name} has been sunk!`);
+        alertSunkShip(this.player, this.board[column][row].name);
       }
       this.board[column][row] = 'hit';
     } else {
