@@ -13,6 +13,7 @@ function initLoad() {
   let nameInput = document.querySelector('#userPlayerName');
   nameInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       initiateGame();
     }
   })
