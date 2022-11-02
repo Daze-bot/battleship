@@ -35,6 +35,22 @@ function newGame() {
   return newGame;
 }
 
+function shipPlacementHelper() {
+  let helperDiv = document.createElement('div');
+  helperDiv.classList.add('placementHelper');
+
+  let btn = document.createElement('button');
+  btn.classList.add('helperBtn');
+  btn.textContent = "Rotate Ship";
+  helperDiv.appendChild(btn);
+
+  let text = document.createElement('p');
+  text.classList.add('helperText');
+  helperDiv.appendChild(text);
+
+  return helperDiv;
+}
+
 function customAlertScreen() {
   let alertBox = document.createElement('div');
   alertBox.classList.add('alertBox', 'hidden');
@@ -44,6 +60,16 @@ function customAlertScreen() {
   alertBox.appendChild(textBox);
 
   return alertBox;
+}
+
+function alertGameStart() {
+  let alertBox = document.querySelector('.alertBox');
+  alertBox.classList.remove('hidden');
+
+  let textBox = document.querySelector('.alertTextBox');
+  textBox.textContent = 'Click on an enemy square to launch your attack!';
+
+  setTimeout(hideAlert, 4000);
 }
 
 function alertSunkShip(player, shipName) {
@@ -86,7 +112,9 @@ function hideAlert() {
 export {
   newGame,
   customAlertScreen,
+  alertGameStart,
   alertSunkShip,
   alertGameOver,
   hideAlert,
+  shipPlacementHelper,
  };

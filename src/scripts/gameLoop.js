@@ -1,12 +1,11 @@
 import { Player } from "./Player";
-import {
-  playerShipPlacement,
-  computerShipPlacement
-} from "./shipPlacement";
+import { placeUserShips } from "./placeUserShips";
+import { computerShipPlacement } from "./shipPlacement";
+import { alertGameStart } from "./DOMscreens";
 
-function gameLoop(userName) {
+async function gameLoop(userName) {
   const userPlayer = new Player(userName);
-  playerShipPlacement(userPlayer);
+  await placeUserShips(userPlayer);
   userPlayer.renderPlayerBoard();
   userPlayer.turn = true;
 
@@ -18,6 +17,8 @@ function gameLoop(userName) {
 }
 
 function playTurn(userPlayer, computerPlayer) {
+  alertGameStart();
+  
   let opponentSquares = document.querySelectorAll('.opponentSquare');
   opponentSquares.forEach(square => {
     square.addEventListener('click', () => {

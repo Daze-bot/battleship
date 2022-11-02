@@ -1,4 +1,3 @@
-import { gameLoad } from './DOMgameLoad';
 import { gameLoop } from './gameLoop';
 import { newGame, customAlertScreen } from './DOMscreens';
 
@@ -30,7 +29,6 @@ function initiateGame() {
   let newGameOptions = document.querySelector('.newGameOptions');
   document.body.removeChild(newGameOptions);
 
-  gameLoad(playerName);
   gameLoop(playerName);
 }
 

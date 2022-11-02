@@ -1,8 +1,3 @@
-function gameLoad(userName) {
-  document.body.appendChild(createPlayerBoard(userName));
-  document.body.appendChild(createOpponentBoard());
-}
-
 function createPlayerBoard(userName) {
   let playerBoard = document.createElement('div');
   playerBoard.classList.add('playerBoard');
@@ -89,4 +84,7 @@ function createOpponentBoard() {
   return playerBoard;
 }
 
-export { gameLoad };
+export {
+  createPlayerBoard,
+  createOpponentBoard,
+};

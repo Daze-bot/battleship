@@ -188,7 +188,8 @@ body {
 }
 
 .startGame,
-.resetGame {
+.resetGame,
+.helperBtn {
   padding: 20px 40px;
   font-size: 2rem;
   font-family: 'black-ops';
@@ -201,7 +202,8 @@ body {
 }
 
 .startGame:hover,
-.resetGame:hover {
+.resetGame:hover,
+.helperBtn:hover {
   background-color: white;
   color: black;
 }
@@ -217,12 +219,36 @@ body {
   justify-content: center;
   align-items: center;
   gap: 15vh;
+  text-align: center;
 }
 
 .alertTextBox {
   font-size: 4rem;
   text-shadow: 0 0 6px white;
   color: rgb(167, 0, 0);
+  font-weight: 700;
+  text-align: center;
+}
+
+.placementHelper {
+  grid-area: 2/2/3/3;
+  height: calc(var(--playerBoardSize) * .8);
+  width: calc(var(--playerBoardSize) * .8);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 30%;
+  margin: 10px;
+}
+
+.helperText {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-size: 3rem;
   font-weight: 700;
 }
 
