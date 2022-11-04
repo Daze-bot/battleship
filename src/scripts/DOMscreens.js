@@ -40,8 +40,11 @@ function shipPlacementHelper() {
   helperDiv.classList.add('placementHelper');
 
   let btn = document.createElement('button');
-  btn.classList.add('helperBtn');
+  btn.classList.add('helperBtn', 'horizontal');
   btn.textContent = "Rotate Ship";
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('horizontal');
+  })
   helperDiv.appendChild(btn);
 
   let text = document.createElement('p');
