@@ -1,7 +1,7 @@
 import { Player } from "./Player";
 import { placeUserShips } from "./placeUserShips";
-import { computerShipPlacement } from "./shipPlacement";
 import { alertGameStart } from "./DOMscreens";
+import { placeComputerShip } from "./placeComputerShips";
 
 async function gameLoop(userName) {
   const userPlayer = new Player(userName);
@@ -10,7 +10,11 @@ async function gameLoop(userName) {
   userPlayer.turn = true;
 
   const computerPlayer = new Player('Computer');
-  computerShipPlacement(computerPlayer);
+  placeComputerShip(computerPlayer, computerPlayer.carrier);
+  placeComputerShip(computerPlayer, computerPlayer.battleship);
+  placeComputerShip(computerPlayer, computerPlayer.destroyer);
+  placeComputerShip(computerPlayer, computerPlayer.submarine);
+  placeComputerShip(computerPlayer, computerPlayer.patrolBoat);
   computerPlayer.renderOpponentBoard();
 
   playTurn(userPlayer, computerPlayer);

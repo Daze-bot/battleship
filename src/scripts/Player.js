@@ -37,7 +37,7 @@ class Player {
       }
     }
     if (notGuessed.length > 0 && this.gameboard.checkAllShipsSunk() === false) {
-      let randomGuess = notGuessed[Math.floor(Math.random()*notGuessed.length)];
+      let randomGuess = notGuessed[Math.floor(Math.random() * notGuessed.length)];
       let randomColumn = randomGuess.slice(1, 2);
       let randomRow = randomGuess.slice(0, 1);
       this.makeAttack(randomColumn, randomRow, userPlayer.gameboard);
