@@ -1,14 +1,13 @@
 import { createPlayerBoard, createOpponentBoard } from "./DOMcreateBoards";
 import { shipPlacementHelper } from "./DOMscreens";
 
-let index = 0;
-
 function placeUserShips(player) {
   return new Promise((resolve) => {
     document.body.appendChild(createPlayerBoard(player.name));
     document.body.appendChild(shipPlacementHelper());
 
     let ships = [player.carrier, player.battleship, player.destroyer, player.submarine, player.patrolBoat];
+    let index = 0;
     
     showHelperText(ships[index]);
 
@@ -49,6 +48,11 @@ function showHelperText(ship) {
 function runGame(player)  {
   let helper = document.querySelector('.placementHelper');
   document.body.removeChild(helper);
+
+  let playerBoard = document.querySelector('.playerBoard');
+  document.body.removeChild(playerBoard);
+
+  document.body.appendChild(createPlayerBoard(player.name));
   document.body.appendChild(createOpponentBoard());
 }
 
@@ -60,7 +64,14 @@ function placementHover(player, ship, square) {
   let rotateBtn = document.querySelector('.helperBtn');
   if (rotateBtn.classList.contains('horizontal')) {
     if (squareColumn + (ship.length - 1) > 9) {
-      return;
+      for (let i = 0; i < ship.length; i++) {
+        let shipColumn = squareColumn + i;
+        let shipRow = squareRow;
+        if (shipColumn <= 9 && shipRow <= 9) {
+          let shipID = document.querySelector(`#p${shipRow}${shipColumn}`);
+          shipID.classList.add('invalidPlacement');
+        }
+      }
     } else {
       for (let i = 0; i < ship.length; i++) {
         let shipColumn = squareColumn + i;
@@ -71,7 +82,14 @@ function placementHover(player, ship, square) {
     }
   } else {
     if (squareRow + (ship.length - 1) > 9) {
-      return;
+      for (let i = 0; i < ship.length; i++) {
+        let shipColumn = squareColumn;
+        let shipRow = squareRow + i;
+        if (shipColumn <= 9 && shipRow <= 9) {
+          let shipID = document.querySelector(`#p${shipRow}${shipColumn}`);
+          shipID.classList.add('invalidPlacement');
+        }
+      }
     } else {
       for (let i = 0; i < ship.length; i++) {
         let shipColumn = squareColumn;
@@ -91,6 +109,11 @@ function placementHover(player, ship, square) {
       shipLocations.forEach(location => {
         let shipID = document.querySelector(`#p${location.slice(1, 2)}${location.slice(0, 1)}`);
         shipID.classList.add('validPlacement');
+      })
+    } else {
+      shipLocations.forEach(location => {
+        let shipID = document.querySelector(`#p${location.slice(1, 2)}${location.slice(0, 1)}`);
+        shipID.classList.add('invalidPlacement');
       })
     }
   }
