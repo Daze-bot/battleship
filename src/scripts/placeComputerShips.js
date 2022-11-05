@@ -9,8 +9,6 @@ function placeComputerShip(cpu, ship) {
     direction = 'vertical';
   }
 
-  console.log(direction);
-
   for (let column = 0; column < cpu.gameboard.board.length; column++) {
     for (let row = 0; row < cpu.gameboard.board[column].length; row++) {
       if (direction === 'horizontal') {

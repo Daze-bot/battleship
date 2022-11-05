@@ -72,7 +72,7 @@ function alertGameStart() {
   let textBox = document.querySelector('.alertTextBox');
   textBox.textContent = 'Click on an enemy square to launch your attack!';
 
-  setTimeout(hideAlert, 4000);
+  setTimeout(hideAlert, 3000);
 }
 
 function alertSunkShip(player, shipName) {

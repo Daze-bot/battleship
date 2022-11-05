@@ -22,6 +22,14 @@ class Ship {
       this.isSunk = false;
     }
   }
+
+  partialHit() {
+    if (this.isSunk === false && this.health < this.length) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export { Ship };

@@ -76,6 +76,15 @@ class Gameboard {
     }
     return false;
   }
+
+  containsShip(column, row) {
+    if (this.board[column][row] !== 'hit' &&
+        this.board[column][row] !== 'miss' &&
+        this.board[column][row] !== "") {
+      return true;
+    }
+    return false;
+  }
 }
 
 export { Gameboard };
