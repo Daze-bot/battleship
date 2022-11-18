@@ -29,6 +29,9 @@ class Player {
   }
 
   AIMove(userPlayer) {
+    if (this.gameboard.checkAllShipsSunk() === true) {
+      return;
+    }
     let woundedShip = userPlayer.allShips.some(ship => {
       return ship.partialHit();
     })
@@ -156,7 +159,7 @@ class Player {
           }
         }
       }
-      if (notGuessed.length > 0 && this.gameboard.checkAllShipsSunk() === false) {
+      if (notGuessed.length > 0) {
         let randomGuess = notGuessed[Math.floor(Math.random() * notGuessed.length)];
         let randomColumn = randomGuess.slice(0, 1);
         let randomRow = randomGuess.slice(1, 2);
