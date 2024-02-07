@@ -17,9 +17,9 @@ The user plays against an intelligent AI in a classic game of Battleship.  Place
 ### Features
 
 - Custom ship placement
-- Difficult and Intelligent AI
-- Great replayability, the computer never plays the same
-- Custom mouse cursor and hit indicators
+- Difficult and intelligent AI
+- Great replayability, the computer never plays the same way twice
+- Custom cursor and hit indicators
 
 ### Built with
 
