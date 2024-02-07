@@ -46,7 +46,7 @@ The user plays against an intelligent AI in a classic game of Battleship.  Place
 - Placing ships:
 <div align="center">
   <kbd>
-    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmdhbW8zd25ubXhrY3Awcms5MWxmcGR2OGl6eW90em41MTd3MTRnYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SwC4oP3IY1JMw0kHGj/giphy.gif"/>
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExc21qaDN5eWRrZDZ3dGRtajQ4eWM5ZmI3ZWE5YmI1dWU0a2I4cTE4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OSzo38h6DADt8koDic/giphy.gif"/>
   </kbd>
 </div>
 
